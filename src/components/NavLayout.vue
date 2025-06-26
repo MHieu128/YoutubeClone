@@ -26,8 +26,20 @@
       </div>
     </div>
     <div class="h-[100%] fixed bg-black z-0" id="SideNav"
-      :class="[!opensideNav ? 'w-[70px]' : 'w-[240px]'], 'hidden sm:block'">
-      <ul class="sm:mt-[60px] mt-[30px] w-full" :class="[!opensideNav? 'p-2': 'px-5 pb-2 pt-[7px]']"></ul>
+      :class="[!openSideNav ? 'w-[70px]' : 'w-[240px]'], 'hidden sm:block'">
+      <ul class="sm:mt-[60px] mt-[30px] w-full" :class="[!openSideNav? 'p-2': 'px-5 pb-2 pt-[7px]']">
+        <SideNavItem v-for="(item, index) in SideNavItems" :key="index" :openSideNav="openSideNav" :iconString="item.iconString"/>
+        <div class="border-b border-b-gray-700 my-2.5"></div>
+        <SideNavItem v-for="(item, index) in SideNavItems2" :key="index" :openSideNav="openSideNav" :iconString="item.iconString"/>
+        <div class="" v-if="openSideNav">
+          <div class="border-b border-b-gray-700 my-2.5"></div>
+          <div class="text-gray-400 text-[14px] font-extrabold">
+            More from YouTube
+            <div class="">Contact us</div>
+            Creator Advertise Developers
+          </div>
+        </div>
+      </ul>
     </div>
   </div>
 </template>
@@ -36,10 +48,27 @@
   import MenuIcon from 'vue-material-design-icons/Menu.vue';
   import MagnifyIcon from 'vue-material-design-icons/Magnify.vue';
   import { ref } from 'vue';
-  const opensideNav = ref(false);
+  import SideNavItem from './SideNavItem.vue';
+
+  const openSideNav = ref(false);
   const tonggleSideNav = () => {
-    opensideNav.value = !opensideNav.value;
+    openSideNav.value = !openSideNav.value;
   }
+
+  const SideNavItems = [
+    { iconString: 'Home' },
+    { iconString: 'Trending' },
+    { iconString: 'Gaming' },
+    { iconString: 'Music' },
+    { iconString: 'News' }
+  ];
+
+  const SideNavItems2 = [
+    { iconString: 'Subscription' },
+    { iconString: 'Library' },
+    { iconString: 'Liked' },
+    { iconString: 'History' }
+  ];
 </script>
 
 <style lang="scss" scoped>
