@@ -1,16 +1,17 @@
 <template>
   <div>
-    <NavLayout />
+    <!-- <NavLayout /> -->
+     <!-- <router-link to="/home">
+      <h1 class="text-3xl font-bold underline">
+        Home Page
+      </h1>
+    </router-link> -->
+    <router-view></router-view>
   </div>
 </template>
 
-<script>
-import NavLayout from './components/NavLayout.vue';
-  export default {
-    components: {
-      NavLayout
-    }
-  }
+<script setup lang="ts">
+import router from './Router/index';
 </script>
 
 <style lang="sass" scoped>
