@@ -81,6 +81,10 @@
       </ul>
     </div>
   </div>
+
+  <main class="ml-70px sm:ml-[240px] p-4">
+    <slot></slot>
+  </main>
 </template>
 
 <script setup>
