@@ -83,7 +83,7 @@
   </div>
 
   <main v-if="!isMobile" :style="{
-    width: openSideNav ? 'calc(100% - 240px)' : 'calc(100% - 70px)',
+    width: openSideNav ? 'calc(100% - 240px)' : 'calc(100% - 70px)'
   }" class="h-[calc(100%- 60px)] absolute right-0 top-[15px]">
     <slot></slot>
   </main>
