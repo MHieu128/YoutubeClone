@@ -51,7 +51,8 @@
     </div>
 
     <!--Mobile Navigation-->
-    <div class="fixed inset-0 z-40 bg-black w-[240px] top-[55px] h-full transition-transform duration-300"v-if="openSideNav && isMobile">
+    <div v-if="openSideNav && isMobile"
+      class="fixed inset-0 z-40 bg-black w-[240px] top-[55px] h-full transition-transform duration-300">
       <ul class="mt-[20px] w-full px-5 pb-2 pt-[7px]">
         <div class="flex items-center rounded-full bg-[#222222] mb-3">
           <input type="text"
@@ -87,6 +88,14 @@
   }" class="h-[calc(100%- 60px)] absolute right-0 top-[15px]">
     <slot></slot>
   </main>
+  
+  <main v-if="isMobile" :style="{
+    marginTop: '10px',
+    marginLeft: isMobile ? '0' : (openSideNav ? '240px' : '70px')
+  }" class="h-[calc(100vh-60px)] absolute right-0 transition-all  duration-300">
+    <slot></slot>
+  </main>
+  
 </template>
 
 <script setup>

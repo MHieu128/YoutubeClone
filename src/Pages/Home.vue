@@ -7,8 +7,9 @@
         :title="video.title"
         :thumbnail="video.thumbnail?.[0].url"
         :channelTitle="video.channelTitle"
-        :views="video.viewCount"
+        :views="`${formatNumber(Number(video.viewCount))} ${video.publishedTimeText}`"
         :channelThumbnail="video.channelThumbnail?.[0].url"
+        @click="goToVideo(video.videoId)"
       />
     </div>
   </NavLayout>
@@ -20,33 +21,26 @@ import NavLayout from '../components/NavLayout.vue';
 import VideoCard from '../components/VideoCard.vue';
 import { getHomeVideos } from '../Services/API';
 import { HomeVideo } from '../Services/DataService';
+import { useRouter } from 'vue-router';
+
 const loading = ref<Boolean>(true);
 const error = ref<string | null>(null);
 const videoData = ref<HomeVideo[]>([]);
+const router = useRouter();
 
-const videoMockData = [
-  {
-    title: 'Build a YouTube Clone with Vue.js',
-    thumbnail: 'https://placehold.co/600x400',
-    channelThumbnail: 'https://placehold.co/400',
-    channelTitle: 'Nfdev guidelines',
-    views: '1.5M views',
-  },
-  {
-    title: 'Build a YouTube Clone with Vue.js',
-    thumbnail: 'https://placehold.co/600x400',
-    channelThumbnail: 'https://placehold.co/400',
-    channelTitle: 'Nfdev guidelines',
-    views: '1.5M views',
-  },
-  {
-    title: 'Build a YouTube Clone with Vue.js',
-    thumbnail: 'https://placehold.co/600x400',
-    channelThumbnail: 'https://placehold.co/400',
-    channelTitle: 'Nfdev guidelines',
-    views: '1.5M views',
+const formatNumber = (value: number): string => {
+  if (value !== null) {
+    if (value > 1000000) {
+      return (value / 1000000).toFixed(1) + 'M';
+    } else if (value > 1000) {
+      return (value / 1000).toFixed(1) + 'K';
+    } else {
+      return value.toString();
+    }
+  } else {
+    return '0';
   }
-]
+};
 
 const fetchHomeVideos = async () => {
   try {
@@ -60,6 +54,10 @@ const fetchHomeVideos = async () => {
   } finally {
     loading.value = false;
   }
+};
+
+const goToVideo = (videoId: string) => {
+  router.push({ name: 'Video', params: { id: videoId } });
 };
 
 onMounted(fetchHomeVideos);
