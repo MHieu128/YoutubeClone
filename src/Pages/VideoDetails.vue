@@ -1,9 +1,9 @@
 <template>
-  <NavLayout>
-    <div v-if="loading" class="w-[90vw] h-[90vh] flex items-center justify-center">
+  <div v-if="loading" class="w-[90vw] h-[90vh] flex items-center justify-center">
       <img :src="loader" alt="Loading..." sizes="30" />
     </div>
-    <div v-if="!loading" class="xl:flex">
+  <NavLayout>
+    <div v-if="!loading" class="xl:flex w-full mt-[20px]">
       <div class="p-3 lg:w-[65%] w-full">
         <div class="w-full h-[300px] md:h-[400px] lg:h-[560px] xl:h-[600px] 2xl:h-[620px] bg-gray-800 rounded-lg flex items-center justify-center">
           <span class="text-white">
@@ -34,17 +34,10 @@
         </div>
       </div>
 
-      <div class="w-full lg:w-[35%] xl:flex flex-col gap-3 p-3">
-        <div class="bg-gray-800 rounded-lg p-3">
-          <div class="w-full h-[80px] bg-gray-700 rounded-md mb-2"></div>
-          <div class="text-white font-bold">Sample video 1</div>
-          <div class="text-gray-400 text-sm">12k views - 3 days</div>
-        </div>
-        <div class="bg-gray-800 rounded-lg p-3">
-          <div class="w-full h-[80px] bg-gray-700 rounded-md mb-2"></div>
-          <div class="text-white font-bold">Sample video 2</div>
-          <div class="text-gray-400 text-sm">12k views - 3 days</div>
-        </div>
+      <div class="w-full lg:w-[35%] xl:flex flex-col gap-3 p-3 mt-[20px]">
+        <RecomendationCard />
+        <RecomendationCard />
+        <RecomendationCard />
       </div>
     </div>
   </NavLayout>
@@ -55,6 +48,7 @@ import { ref } from 'vue';
 import NavLayout from '../components/NavLayout.vue';
 import loader from '../assets/loader.gif';
 import CheckCircle from 'vue-material-design-icons/CheckCircle.vue';
+import RecomendationCard from '../components/RecomendationCard.vue';
 
 const loading = ref<Boolean>(false);
 

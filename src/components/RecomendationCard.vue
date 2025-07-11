@@ -1,23 +1,29 @@
 <template>
-  <div class="flex flex-col lg:flex-row md:gap-3 sm:items-start">
-    <div class="relative lg:w-1/2 w-full">
+  <div class="flex flex-col lg:flex-row md:gap-3 sm:items-start mt-[15px]">
+    <div class="relative lg:w-full">
       <img
-        src="https://placehold.co/400"
+        src="https://placehold.co/600x400"
         class="aspect-video cursor-pointer rounded-lg sm:w-full"
         alt=""
       />
-      <div class="px-3 mt-2 sm:mt-0 sm:w-1/2 text-white">
-        12:34
+      <div class="px-3 mt-2 sm:mt-3 ml-2 sm:w-1/2 text-white">
+        <div class="text-[15px] pb-1.5 font-bold w-full cursor-pointer">
+          Sample video Title
+        </div>
+        <div class="text-[14px] text-gray-300 font-extrabold flex gap-1 items-center cursor-pointer">
+          Channel Name
+          <CheckCircle fillcolor="#888888" :size="17" />
+        </div>
+        <div class="text-sm mb-2 text-white cursor-pointer">
+          1.4k views • 1 day ago
+        </div>
       </div>
-
     </div>
   </div>
 </template>
 
-<script>
-  export default {
-    
-  }
+<script setup lang="ts">
+import CheckCircle from 'vue-material-design-icons/CheckCircle.vue';
 </script>
 
 <style lang="scss" scoped>
