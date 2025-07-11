@@ -33,6 +33,19 @@
           </div>
         </div>
       </div>
+
+      <div class="w-full lg:w-[35%] xl:flex flex-col gap-3 p-3">
+        <div class="bg-gray-800 rounded-lg p-3">
+          <div class="w-full h-[80px] bg-gray-700 rounded-md mb-2"></div>
+          <div class="text-white font-bold">Sample video 1</div>
+          <div class="text-gray-400 text-sm">12k views - 3 days</div>
+        </div>
+        <div class="bg-gray-800 rounded-lg p-3">
+          <div class="w-full h-[80px] bg-gray-700 rounded-md mb-2"></div>
+          <div class="text-white font-bold">Sample video 2</div>
+          <div class="text-gray-400 text-sm">12k views - 3 days</div>
+        </div>
+      </div>
     </div>
   </NavLayout>
 </template>
@@ -43,7 +56,7 @@ import NavLayout from '../components/NavLayout.vue';
 import loader from '../assets/loader.gif';
 import CheckCircle from 'vue-material-design-icons/CheckCircle.vue';
 
-const loading = ref<Boolean>(true);
+const loading = ref<Boolean>(false);
 
 
 </script>
